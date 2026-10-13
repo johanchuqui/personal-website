@@ -392,7 +392,7 @@ All text/background pairs must reach **4.5:1 contrast**. Check them with a contr
 - Code blocks: dark panel with three "window dots", a language label and a copy button.
 - Custom 404: `bash: /page: No such file or directory`.
 
-**Dark mode:** `next-themes` with `attribute="class"`, `defaultTheme="system"`, `enableSystem`, and `suppressHydrationWarning` on `<html>`. Its inline script sets the class before paint, so the page never flashes. The toggle button has `aria-label` and switches the sun/moon icon.
+**Dark mode:** an inline script in `<head>` (`layout.tsx`) sets the `dark` class before paint from the saved choice or the OS setting, with `suppressHydrationWarning` on `<html>`, so the page never flashes. The toggle button has `aria-label` and switches the sun/moon icon.
 
 **Accessibility checklist:**
 

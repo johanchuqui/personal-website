@@ -54,8 +54,17 @@ supabase/       database migrations and seed data
 
 ## Editing content
 
-_Coming in later milestones:_ blog posts and projects are managed from the
-admin area at `/admin`.
+- **Name, tagline, email, GitHub/LinkedIn links, nav menu:** edit
+  [`src/lib/site.ts`](./src/lib/site.ts). Every page reads from it.
+- **About page text and skills:** edit
+  [`src/app/(site)/about/page.tsx`](<./src/app/(site)/about/page.tsx>).
+- **Résumé:** replace `public/resume.pdf` with your file (keep the same name),
+  then commit and push.
+- **Colors:** all colors are tokens at the top of
+  [`src/app/globals.css`](./src/app/globals.css) (`--accent` is the main one;
+  light values in `:root`, dark values in `.dark`).
+- _Coming later:_ blog posts and projects are managed from the admin area at
+  `/admin`.
 
 ## Deploying
 
