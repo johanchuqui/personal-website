@@ -91,7 +91,7 @@ export default function AboutPage() {
             <p className="text-muted font-mono text-sm">$ cat resume.pdf</p>
             <ButtonAnchor
               href={site.resumePath}
-              download
+              download={site.resumeDownloadName}
               className="w-full justify-center"
             >
               <DownloadIcon /> Download résumé

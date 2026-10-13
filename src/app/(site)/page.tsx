@@ -14,7 +14,10 @@ export default function Home() {
       <div className="space-y-6">
         <TerminalHero />
         <div className="flex flex-wrap gap-3">
-          <ButtonAnchor href={site.resumePath} download>
+          <ButtonAnchor
+            href={site.resumePath}
+            download={site.resumeDownloadName}
+          >
             <DownloadIcon /> Download résumé
           </ButtonAnchor>
           <ButtonLink href="/projects" variant="secondary">

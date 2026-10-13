@@ -9,6 +9,8 @@ export const site = {
   lookingFor: "Open to Data Analyst & Software Engineering roles",
   email: "johanchuqui05@gmail.com",
   resumePath: "/resume.pdf",
+  // File name visitors get when they download it
+  resumeDownloadName: "Johan_Chuqui_Resume.pdf",
   links: {
     github: "https://github.com/johanchuqui",
     // TODO: replace with your real LinkedIn profile URL
