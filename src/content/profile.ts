@@ -56,6 +56,26 @@ export const profile = {
 
   location: "New Jersey, USA",
 
+  // Short greeting above your name on the home page.
+  greeting: "Hi, I'm",
+
+  // Quick stats shown on the home page. TODO: make these true for you.
+  highlights: [
+    { value: "3+", label: "years coding" },
+    { value: "10+", label: "projects built" },
+    { value: "'27", label: "Rutgers grad" },
+    { value: "∞", label: "cups of coffee" },
+  ],
+
+  // What you're up to right now. Shown as a "currently" card on the home page.
+  // TODO: update these every few months — it keeps the site feeling alive.
+  now: [
+    { label: "Building", value: "This portfolio site" },
+    { label: "Learning", value: "Machine learning with scikit-learn" },
+    { label: "Reading", value: "Storytelling with Data" },
+    { label: "Listening to", value: "Lo-fi beats while coding" },
+  ],
+
   // Your background, one string per paragraph.
   // TODO: rewrite these in your own words.
   bio: [
