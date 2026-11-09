@@ -42,11 +42,31 @@ committed. [`.env.example`](./.env.example) lists every variable the site needs
 and where to find each one. Variables starting with `NEXT_PUBLIC_` are visible in
 the browser; all others stay on the server.
 
+## Updating your content
+
+Everything on the Home, About and Projects pages comes from **one file**:
+[`src/content/profile.ts`](./src/content/profile.ts). Open it, replace the
+`TODO` placeholders, save, and the site updates.
+
+| What                                   | Where                                                                                    |
+| -------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Name, tagline, email, GitHub, LinkedIn | `src/lib/site.ts`                                                                        |
+| Bio / background, location             | `profile.bio`, `profile.location`                                                        |
+| Your photo                             | Add `public/images/profile.jpg`, then set `profile.photo.src` to `"/images/profile.jpg"` |
+| Experience, education, skills          | `profile.experience`, `profile.education`, `profile.skills`                              |
+| Hobbies and interests                  | `profile.hobbies`, `profile.interests`                                                   |
+| Projects                               | `profile.projects` (screenshots go in `public/images/projects/`)                         |
+| Résumé                                 | Replace `public/resume.pdf`                                                              |
+
+Each project gets its own page at `/projects/<slug>`. Set `featured: true` to
+show it on the home page.
+
 ## Project structure
 
 ```
 src/app/        pages and routes (each folder = a URL)
 src/components/ reusable UI pieces
+src/content/    your portfolio content (bio, photo, hobbies, projects)
 src/lib/        helpers: database clients, validation, site config
 public/         static files served as-is (résumé, images)
 supabase/       database migrations and seed data
