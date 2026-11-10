@@ -62,7 +62,7 @@ export const profile = {
   photo: {
     src: "/images/profile.jpg",
     alt: "Portrait of Johan Chuqui",
-    position: "50% 50%",
+    position: "35% 50%",
   } satisfies Photo,
 
   location: "New Jersey, USA",
