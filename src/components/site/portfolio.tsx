@@ -15,16 +15,26 @@ export function ProfilePhoto({
   priority?: boolean;
   className?: string;
 }) {
+  const { src, alt, position = "50% 50%", zoom = 1 } = profile.photo;
   return (
-    <Image
-      src={profile.photo.src}
-      alt={profile.photo.alt}
-      width={size}
-      height={size}
-      priority={priority}
-      style={{ objectPosition: profile.photo.position }}
-      className={`border-border aspect-square rounded-2xl border object-cover shadow-sm ${className}`}
-    />
+    // The frame clips the photo, so zooming in never spills outside it.
+    <div
+      className={`border-border aspect-square overflow-hidden rounded-2xl border shadow-sm ${className}`}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={size}
+        height={size}
+        priority={priority}
+        style={{
+          objectPosition: position,
+          transform: zoom !== 1 ? `scale(${zoom})` : undefined,
+          transformOrigin: position,
+        }}
+        className="size-full object-cover"
+      />
+    </div>
   );
 }
 

@@ -20,6 +20,11 @@ export type Photo = {
    * The second number does the same for top (0%) to bottom (100%).
    */
   position?: string;
+  /**
+   * Zoom in on the photo. 1 = no zoom, 1.3 = 30% closer, 2 = twice as close.
+   * Zooming centers on `position`, so set that to where your face is.
+   */
+  zoom?: number;
 };
 
 export type Project = {
@@ -63,6 +68,7 @@ export const profile = {
     src: "/images/profile-placeholder.svg",
     alt: "Portrait of Johan Chuqui",
     position: "50% 50%",
+    zoom: 1,
   } satisfies Photo,
 
   location: "New Jersey, USA",
