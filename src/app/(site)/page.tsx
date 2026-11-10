@@ -33,7 +33,7 @@ export default function Home() {
             href={site.resumePath}
             download={site.resumeDownloadName}
           >
-            <DownloadIcon /> Download résumé
+            <DownloadIcon /> Download resume
           </ButtonAnchor>
           <ButtonAnchor
             href={site.links.linkedin}

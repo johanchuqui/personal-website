@@ -6,7 +6,7 @@ export const site = {
   role: "CS & Data Science @ Rutgers '27",
   tagline:
     "I turn messy data into clear answers, and ideas into working software.",
-  lookingFor: "Open to Data Analyst & Software Engineering roles",
+  lookingFor: "Open to SWE and Data Analyst roles in the NYC Metropolitan area",
   email: "johanchuqui05@gmail.com",
   resumePath: "/resume.pdf",
   // File name visitors get when they download it

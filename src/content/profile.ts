@@ -62,7 +62,7 @@ export const profile = {
   photo: {
     src: "/images/profile.jpg",
     alt: "Portrait of Johan Chuqui",
-    position: "35% 50%",
+    position: "60% 50%",
   } satisfies Photo,
 
   location: "New Jersey, USA",
@@ -145,23 +145,29 @@ export const profile = {
   // TODO: make these yours.
   hobbies: [
     {
-      icon: "📷",
-      name: "Photography",
-      description: "Shooting street and campus scenes, mostly on weekends.",
-    },
-    {
-      icon: "⚽",
+      icon: "",
       name: "Soccer",
-      description: "Pickup games and following the Champions League.",
+      description: "Whenever I find myself with even a little bit of free time, I usually \
+      spend it playing soccer with my friends. My family is originally from Ecuador, so \
+      I grew up playing and following soccer. It's always been a big part of my life. My \
+      favorite team is, unfortunately, Manchester United. GGMU!",
+    },
+     {
+      icon: "",
+      name: "Jiu-Jitsu",
+      description: "For the past two months, I've been training Brazilian Jiu-Jitsu twice \
+      a week after my good friend Olex convinced me to join the Rutgers BJJ Club. After \
+      my first session, I immediately fell in love with the sport. Since then, I've looked \
+      forward to every chance to step onto the mats, challenge myself, and keep improving.",
     },
     {
-      icon: "🎧",
+      icon: "",
       name: "Music",
       description: "Making playlists for every mood and occasionally DJing.",
     },
     {
-      icon: "🍳",
-      name: "Cooking",
+      icon: "",
+      name: "Weight Lifting",
       description: "Trying to recreate family recipes from memory.",
     },
   ] satisfies Hobby[],
