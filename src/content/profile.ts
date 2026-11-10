@@ -10,7 +10,17 @@
 // your headshot; 16:9 screenshots work best for projects.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type Photo = { src: string; alt: string };
+export type Photo = {
+  src: string;
+  alt: string;
+  /**
+   * Which part of the photo stays in view when it's cropped to a square.
+   * "50% 50%" is the center. Raise the first number to shift toward the
+   * right side of the photo ("70% 50%"), lower it to shift left ("30% 50%").
+   * The second number does the same for top (0%) to bottom (100%).
+   */
+  position?: string;
+};
 
 export type Project = {
   /** Used in the URL: /projects/<slug>. Lowercase letters, numbers, dashes. */
@@ -52,6 +62,7 @@ export const profile = {
   photo: {
     src: "/images/profile-placeholder.svg",
     alt: "Portrait of Johan Chuqui",
+    position: "50% 50%",
   } satisfies Photo,
 
   location: "New Jersey, USA",

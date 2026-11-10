@@ -22,6 +22,7 @@ export function ProfilePhoto({
       width={size}
       height={size}
       priority={priority}
+      style={{ objectPosition: profile.photo.position }}
       className={`border-border aspect-square rounded-2xl border object-cover shadow-sm ${className}`}
     />
   );
