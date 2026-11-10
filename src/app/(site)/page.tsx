@@ -75,7 +75,7 @@ export default function Home() {
 
       <section aria-labelledby="hobbies-heading" className="space-y-6">
         <SectionHeading id="hobbies-heading">Outside of code</SectionHeading>
-        <HobbyGrid />
+        <HobbyGrid wide />
         <div>
           <p className="text-muted mb-2 font-mono text-sm">
             $ cat interests.txt

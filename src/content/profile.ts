@@ -20,6 +20,22 @@ export type Photo = {
    * The second number does the same for top (0%) to bottom (100%).
    */
   position?: string;
+  /**
+   * Zoom in on the photo. 1 = no zoom, 1.3 = 30% closer, 2 = twice as close.
+   * Zooming centers on `position`, so set that to where your face is.
+   */
+  zoom?: number;
+};
+
+export type ProfilePhotoSettings = Photo & {
+  /**
+   * Frame shape for your profile photo:
+   *   "rounded"  – square with soft corners (default)
+   *   "circle"   – round
+   *   "square"   – sharp corners
+   *   "portrait" – taller rectangle (4:5) with soft corners
+   */
+  shape?: "rounded" | "circle" | "square" | "portrait";
 };
 
 export type Project = {
@@ -51,10 +67,16 @@ export type Experience = {
 };
 
 export type Hobby = {
-  /** An emoji works well here. */
+  /** An emoji, shown on the card (and used instead of a photo if none). */
   icon: string;
   name: string;
   description: string;
+  /**
+   * Optional photo, e.g. { src: "/images/hobbies/soccer.jpg", alt: "..." }.
+   * Put the file in public/images/hobbies/. Landscape (4:3) photos fit best;
+   * `position` works the same as for your profile photo.
+   */
+  image?: { src: string; alt: string; position?: string };
 };
 
 export const profile = {
@@ -62,8 +84,15 @@ export const profile = {
   photo: {
     src: "/images/profile.jpg",
     alt: "Portrait of Johan Chuqui",
+<<<<<<< HEAD
     position: "60% 50%",
   } satisfies Photo,
+=======
+    position: "50% 50%",
+    zoom: 1,
+    shape: "rounded",
+  } satisfies ProfilePhotoSettings,
+>>>>>>> 6a23f62371e381d90032861423b24444c10bf0d0
 
   location: "New Jersey, USA",
 
@@ -145,6 +174,7 @@ export const profile = {
   // TODO: make these yours.
   hobbies: [
     {
+<<<<<<< HEAD
       icon: "",
       name: "Soccer",
       description: "Whenever I find myself with even a little bit of free time, I usually \
@@ -159,16 +189,45 @@ export const profile = {
       a week after my good friend Olex convinced me to join the Rutgers BJJ Club. After \
       my first session, I immediately fell in love with the sport. Since then, I've looked \
       forward to every chance to step onto the mats, challenge myself, and keep improving.",
+=======
+      icon: "⚽",
+      name: "Soccer",
+      // TODO: describe how you play (position, team, pickup?) and who you follow.
+      description:
+        "Pickup games whenever I can, and following my teams every weekend.",
+      // TODO: add a photo, then uncomment:
+      // image: { src: "/images/hobbies/soccer.jpg", alt: "Me playing soccer" },
+    },
+    {
+      icon: "🥋",
+      name: "Brazilian Jiu-Jitsu",
+      // TODO: add your belt, gym, or how long you've trained.
+      description:
+        "Training BJJ: equal parts problem-solving and getting humbled on the mats.",
+      // image: { src: "/images/hobbies/bjj.jpg", alt: "Me at BJJ training" },
+>>>>>>> 6a23f62371e381d90032861423b24444c10bf0d0
     },
     {
       icon: "",
       name: "Music",
-      description: "Making playlists for every mood and occasionally DJing.",
+      // TODO: name a few artists or genres you love.
+      description:
+        "Always have something playing, from late-night study playlists to the gym.",
+      // image: { src: "/images/hobbies/music.jpg", alt: "My headphones and record collection" },
     },
     {
+<<<<<<< HEAD
       icon: "",
       name: "Weight Lifting",
       description: "Trying to recreate family recipes from memory.",
+=======
+      icon: "🐈",
+      // TODO: put your cat's name here, e.g. "My cat, Luna".
+      name: "My cat",
+      description:
+        "Chief debugging officer. Mostly sits on my keyboard at the worst possible time.",
+      // image: { src: "/images/hobbies/cat.jpg", alt: "My cat" },
+>>>>>>> 6a23f62371e381d90032861423b24444c10bf0d0
     },
   ] satisfies Hobby[],
 
