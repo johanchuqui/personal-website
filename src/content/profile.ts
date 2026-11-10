@@ -50,7 +50,7 @@ export type Hobby = {
 export const profile = {
   // TODO: replace with "/images/profile.jpg" once you add your photo.
   photo: {
-    src: "/images/profile-placeholder.svg",
+    src: "/images/profile.jpg",
     alt: "Portrait of Johan Chuqui",
   } satisfies Photo,
 
