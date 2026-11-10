@@ -67,8 +67,8 @@ export type Experience = {
 };
 
 export type Hobby = {
-  /** An emoji, shown on the card (and used instead of a photo if none). */
-  icon: string;
+  /** Optional emoji shown next to the name (and instead of a photo if none). Use "" for none. */
+  icon?: string;
   name: string;
   description: string;
   /**
@@ -80,19 +80,13 @@ export type Hobby = {
 };
 
 export const profile = {
-  // TODO: replace with "/images/profile.jpg" once you add your photo.
   photo: {
     src: "/images/profile.jpg",
     alt: "Portrait of Johan Chuqui",
-<<<<<<< HEAD
     position: "60% 50%",
-  } satisfies Photo,
-=======
-    position: "50% 50%",
     zoom: 1,
     shape: "rounded",
   } satisfies ProfilePhotoSettings,
->>>>>>> 6a23f62371e381d90032861423b24444c10bf0d0
 
   location: "New Jersey, USA",
 
@@ -174,38 +168,19 @@ export const profile = {
   // TODO: make these yours.
   hobbies: [
     {
-<<<<<<< HEAD
       icon: "",
       name: "Soccer",
-      description: "Whenever I find myself with even a little bit of free time, I usually \
-      spend it playing soccer with my friends. My family is originally from Ecuador, so \
-      I grew up playing and following soccer. It's always been a big part of my life. My \
-      favorite team is, unfortunately, Manchester United. GGMU!",
-    },
-     {
-      icon: "",
-      name: "Jiu-Jitsu",
-      description: "For the past two months, I've been training Brazilian Jiu-Jitsu twice \
-      a week after my good friend Olex convinced me to join the Rutgers BJJ Club. After \
-      my first session, I immediately fell in love with the sport. Since then, I've looked \
-      forward to every chance to step onto the mats, challenge myself, and keep improving.",
-=======
-      icon: "⚽",
-      name: "Soccer",
-      // TODO: describe how you play (position, team, pickup?) and who you follow.
       description:
-        "Pickup games whenever I can, and following my teams every weekend.",
-      // TODO: add a photo, then uncomment:
+        "Whenever I find myself with even a little bit of free time, I usually spend it playing soccer with my friends. My family is originally from Ecuador, so I grew up playing and following soccer. It's always been a big part of my life. My favorite team is, unfortunately, Manchester United. GGMU!",
+      // To add a photo, put it in public/images/hobbies/ and uncomment:
       // image: { src: "/images/hobbies/soccer.jpg", alt: "Me playing soccer" },
     },
     {
-      icon: "🥋",
-      name: "Brazilian Jiu-Jitsu",
-      // TODO: add your belt, gym, or how long you've trained.
+      icon: "",
+      name: "Jiu-Jitsu",
       description:
-        "Training BJJ: equal parts problem-solving and getting humbled on the mats.",
+        "For the past two months, I've been training Brazilian Jiu-Jitsu twice a week after my good friend Olex convinced me to join the Rutgers BJJ Club. After my first session, I immediately fell in love with the sport. Since then, I've looked forward to every chance to step onto the mats, challenge myself, and keep improving.",
       // image: { src: "/images/hobbies/bjj.jpg", alt: "Me at BJJ training" },
->>>>>>> 6a23f62371e381d90032861423b24444c10bf0d0
     },
     {
       icon: "",
@@ -216,18 +191,19 @@ export const profile = {
       // image: { src: "/images/hobbies/music.jpg", alt: "My headphones and record collection" },
     },
     {
-<<<<<<< HEAD
       icon: "",
       name: "Weight Lifting",
-      description: "Trying to recreate family recipes from memory.",
-=======
-      icon: "🐈",
+      // TODO: write your own description (how often, what you're working toward).
+      description: "Hitting the gym a few times a week to clear my head.",
+      // image: { src: "/images/hobbies/lifting.jpg", alt: "Me at the gym" },
+    },
+    {
+      icon: "",
       // TODO: put your cat's name here, e.g. "My cat, Luna".
       name: "My cat",
       description:
         "Chief debugging officer. Mostly sits on my keyboard at the worst possible time.",
       // image: { src: "/images/hobbies/cat.jpg", alt: "My cat" },
->>>>>>> 6a23f62371e381d90032861423b24444c10bf0d0
     },
   ] satisfies Hobby[],
 

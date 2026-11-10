@@ -140,8 +140,12 @@ export function ProjectGrid({ projects }: { projects: readonly Project[] }) {
 
 // `wide` fits all cards in one row on large screens (used on the home page).
 export function HobbyGrid({ wide = false }: { wide?: boolean }) {
+  // On wide screens use 4 columns for 4 or 8 cards, otherwise 3, so the last
+  // row isn't left with a single lonely card.
+  const cols =
+    profile.hobbies.length % 4 === 0 ? "lg:grid-cols-4" : "lg:grid-cols-3";
   return (
-    <ul className={`grid gap-5 sm:grid-cols-2 ${wide ? "lg:grid-cols-4" : ""}`}>
+    <ul className={`grid gap-5 sm:grid-cols-2 ${wide ? cols : ""}`}>
       {profile.hobbies.map((h: Hobby) => (
         <li
           key={h.name}
@@ -158,20 +162,28 @@ export function HobbyGrid({ wide = false }: { wide?: boolean }) {
                 className="object-cover transition duration-500 group-hover:scale-105"
               />
             ) : (
-              // No photo yet: a soft tinted panel with a big emoji.
+              // No photo yet: a tinted panel with the emoji, or the name.
               <div
                 aria-hidden="true"
-                className="bg-accent/10 flex size-full items-center justify-center text-7xl"
+                className="bg-accent/10 text-accent flex size-full items-center justify-center p-4 text-center"
               >
-                {h.icon}
+                {h.icon ? (
+                  <span className="text-7xl">{h.icon}</span>
+                ) : (
+                  <span className="font-mono text-sm">
+                    ./{h.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
+                  </span>
+                )}
               </div>
             )}
           </div>
           <div className="p-5">
             <p className="font-semibold">
-              <span aria-hidden="true" className="mr-2">
-                {h.icon}
-              </span>
+              {h.icon && (
+                <span aria-hidden="true" className="mr-2">
+                  {h.icon}
+                </span>
+              )}
               {h.name}
             </p>
             <p className="text-muted mt-1 text-sm">{h.description}</p>
