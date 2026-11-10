@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { categoryLabels, profile, type Project } from "@/content/profile";
+import {
+  categoryLabels,
+  profile,
+  type Hobby,
+  type Project,
+} from "@/content/profile";
 import { GitHubIcon } from "./icons";
 
 // Building blocks for the portfolio sections (photo, chips, project cards,
@@ -115,20 +120,43 @@ export function ProjectGrid({ projects }: { projects: readonly Project[] }) {
   );
 }
 
-export function HobbyGrid() {
+// `wide` fits all cards in one row on large screens (used on the home page).
+export function HobbyGrid({ wide = false }: { wide?: boolean }) {
   return (
-    <ul className="grid gap-4 sm:grid-cols-2">
-      {profile.hobbies.map((h) => (
+    <ul className={`grid gap-5 sm:grid-cols-2 ${wide ? "lg:grid-cols-4" : ""}`}>
+      {profile.hobbies.map((h: Hobby) => (
         <li
           key={h.name}
-          className="border-border bg-surface flex gap-4 rounded-xl border p-5"
+          className="border-border bg-surface group overflow-hidden rounded-xl border transition hover:shadow-md"
         >
-          <span aria-hidden="true" className="text-3xl leading-none">
-            {h.icon}
-          </span>
-          <div>
-            <p className="font-semibold">{h.name}</p>
-            <p className="text-muted text-sm">{h.description}</p>
+          <div className="border-border relative aspect-[4/3] overflow-hidden border-b">
+            {h.image ? (
+              <Image
+                src={h.image.src}
+                alt={h.image.alt}
+                fill
+                sizes="(min-width: 640px) 50vw, 100vw"
+                style={{ objectPosition: h.image.position }}
+                className="object-cover transition duration-500 group-hover:scale-105"
+              />
+            ) : (
+              // No photo yet: a soft tinted panel with a big emoji.
+              <div
+                aria-hidden="true"
+                className="bg-accent/10 flex size-full items-center justify-center text-7xl"
+              >
+                {h.icon}
+              </div>
+            )}
+          </div>
+          <div className="p-5">
+            <p className="font-semibold">
+              <span aria-hidden="true" className="mr-2">
+                {h.icon}
+              </span>
+              {h.name}
+            </p>
+            <p className="text-muted mt-1 text-sm">{h.description}</p>
           </div>
         </li>
       ))}

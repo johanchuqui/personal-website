@@ -56,10 +56,16 @@ export type Experience = {
 };
 
 export type Hobby = {
-  /** An emoji works well here. */
+  /** An emoji, shown on the card (and used instead of a photo if none). */
   icon: string;
   name: string;
   description: string;
+  /**
+   * Optional photo, e.g. { src: "/images/hobbies/soccer.jpg", alt: "..." }.
+   * Put the file in public/images/hobbies/. Landscape (4:3) photos fit best;
+   * `position` works the same as for your profile photo.
+   */
+  image?: { src: string; alt: string; position?: string };
 };
 
 export const profile = {
@@ -151,24 +157,37 @@ export const profile = {
   // TODO: make these yours.
   hobbies: [
     {
-      icon: "📷",
-      name: "Photography",
-      description: "Shooting street and campus scenes, mostly on weekends.",
-    },
-    {
       icon: "⚽",
       name: "Soccer",
-      description: "Pickup games and following the Champions League.",
+      // TODO: describe how you play (position, team, pickup?) and who you follow.
+      description:
+        "Pickup games whenever I can, and following my teams every weekend.",
+      // TODO: add a photo, then uncomment:
+      // image: { src: "/images/hobbies/soccer.jpg", alt: "Me playing soccer" },
+    },
+    {
+      icon: "🥋",
+      name: "Brazilian Jiu-Jitsu",
+      // TODO: add your belt, gym, or how long you've trained.
+      description:
+        "Training BJJ: equal parts problem-solving and getting humbled on the mats.",
+      // image: { src: "/images/hobbies/bjj.jpg", alt: "Me at BJJ training" },
     },
     {
       icon: "🎧",
       name: "Music",
-      description: "Making playlists for every mood and occasionally DJing.",
+      // TODO: name a few artists or genres you love.
+      description:
+        "Always have something playing, from late-night study playlists to the gym.",
+      // image: { src: "/images/hobbies/music.jpg", alt: "My headphones and record collection" },
     },
     {
-      icon: "🍳",
-      name: "Cooking",
-      description: "Trying to recreate family recipes from memory.",
+      icon: "🐈",
+      // TODO: put your cat's name here, e.g. "My cat, Luna".
+      name: "My cat",
+      description:
+        "Chief debugging officer. Mostly sits on my keyboard at the worst possible time.",
+      // image: { src: "/images/hobbies/cat.jpg", alt: "My cat" },
     },
   ] satisfies Hobby[],
 
