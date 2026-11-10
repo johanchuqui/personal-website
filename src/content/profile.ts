@@ -27,6 +27,17 @@ export type Photo = {
   zoom?: number;
 };
 
+export type ProfilePhotoSettings = Photo & {
+  /**
+   * Frame shape for your profile photo:
+   *   "rounded"  – square with soft corners (default)
+   *   "circle"   – round
+   *   "square"   – sharp corners
+   *   "portrait" – taller rectangle (4:5) with soft corners
+   */
+  shape?: "rounded" | "circle" | "square" | "portrait";
+};
+
 export type Project = {
   /** Used in the URL: /projects/<slug>. Lowercase letters, numbers, dashes. */
   slug: string;
@@ -75,7 +86,8 @@ export const profile = {
     alt: "Portrait of Johan Chuqui",
     position: "50% 50%",
     zoom: 1,
-  } satisfies Photo,
+    shape: "rounded",
+  } satisfies ProfilePhotoSettings,
 
   location: "New Jersey, USA",
 

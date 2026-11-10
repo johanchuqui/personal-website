@@ -4,12 +4,23 @@ import {
   categoryLabels,
   profile,
   type Hobby,
+  type ProfilePhotoSettings,
   type Project,
 } from "@/content/profile";
 import { GitHubIcon } from "./icons";
 
 // Building blocks for the portfolio sections (photo, chips, project cards,
 // hobbies). Content comes from src/content/profile.ts.
+
+const shapeClasses: Record<
+  NonNullable<ProfilePhotoSettings["shape"]>,
+  string
+> = {
+  rounded: "aspect-square rounded-2xl",
+  circle: "aspect-square rounded-full",
+  square: "aspect-square rounded-none",
+  portrait: "aspect-[4/5] rounded-2xl",
+};
 
 export function ProfilePhoto({
   size = 240,
@@ -20,17 +31,24 @@ export function ProfilePhoto({
   priority?: boolean;
   className?: string;
 }) {
-  const { src, alt, position = "50% 50%", zoom = 1 } = profile.photo;
+  const {
+    src,
+    alt,
+    position = "50% 50%",
+    zoom = 1,
+    shape = "rounded",
+  } = profile.photo as ProfilePhotoSettings;
+  const tall = shape === "portrait";
   return (
     // The frame clips the photo, so zooming in never spills outside it.
     <div
-      className={`border-border aspect-square overflow-hidden rounded-2xl border shadow-sm ${className}`}
+      className={`border-border overflow-hidden border shadow-sm ${shapeClasses[shape]} ${className}`}
     >
       <Image
         src={src}
         alt={alt}
         width={size}
-        height={size}
+        height={tall ? Math.round(size * 1.25) : size}
         priority={priority}
         style={{
           objectPosition: position,
