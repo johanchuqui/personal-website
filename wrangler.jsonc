@@ -1,0 +1,12 @@
+// Cloudflare Workers config. The site is plain static files (built into
+// `out/` by `npm run build`), so the Worker only serves those files.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "personal-website",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./out",
+    // Show out/404.html for unknown URLs.
+    "not_found_handling": "404-page",
+  },
+}

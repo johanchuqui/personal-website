@@ -1,12 +1,9 @@
-import { cacheLife } from "next/cache";
 import { site } from "@/lib/site";
 import { SocialLinks } from "./SocialLinks";
 
-// Next.js needs to know how long a time-based value may be cached so the page
-// can stay static. The year is recomputed at most once a day.
-async function CurrentYear() {
-  "use cache";
-  cacheLife("days");
+// The site is built as static files, so the year is filled in at build time
+// (every deploy refreshes it).
+function CurrentYear() {
   return <>{new Date().getFullYear()}</>;
 }
 

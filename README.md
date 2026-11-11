@@ -4,7 +4,7 @@ My personal site: blog, projects portfolio, and contact form, with a private
 admin area for managing content.
 
 Built with **Next.js 16** (App Router, TypeScript), **Tailwind CSS v4**,
-**Supabase** (database, login, image storage) and deployed on **Vercel**.
+**Supabase** (database, login, image storage) and deployed on **Cloudflare** (as static files).
 See [`PLAN.md`](./PLAN.md) for the full design and build order.
 
 ## Prerequisites
@@ -29,7 +29,8 @@ Stop the server with `Ctrl + C`.
 | ------------------- | ------------------------------------------------------------- |
 | `npm run dev`       | Start the local dev server                                    |
 | `npm run build`     | Build the production version (catches errors)                 |
-| `npm run start`     | Run the production build locally                              |
+| `npm run preview`   | Build and serve the site exactly as Cloudflare will           |
+| `npm run deploy`    | Build and upload the site to Cloudflare from your computer    |
 | `npm run lint`      | Check code for common mistakes (ESLint)                       |
 | `npm run typecheck` | Check TypeScript types                                        |
 | `npm run format`    | Auto-format all files (Prettier)                              |
@@ -41,6 +42,25 @@ Secrets live in `.env.local`, which is **git-ignored** and must never be
 committed. [`.env.example`](./.env.example) lists every variable the site needs
 and where to find each one. Variables starting with `NEXT_PUBLIC_` are visible in
 the browser; all others stay on the server.
+
+## Deploy (Cloudflare)
+
+The site is built as plain static files (`npm run build` writes them to
+`out/`) and served by Cloudflare Workers. Settings live in `wrangler.jsonc`.
+No environment variables are needed.
+
+**Automatic deploys from GitHub (recommended):** Cloudflare dashboard →
+**Workers & Pages → Create → Import a repository** → pick this repo, then:
+
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Production branch: `main`
+
+After that, every `git push` to `main` updates the live site. Add your domain
+under the Worker's **Settings → Domains & Routes → Add → Custom domain**.
+
+**Manual deploy from your laptop:** `npx wrangler login` once, then
+`npm run deploy`.
 
 ## Updating your content
 
@@ -138,7 +158,3 @@ is in [`supabase/seed.sql`](./supabase/seed.sql).
   light values in `:root`, dark values in `.dark`).
 - _Coming later:_ blog posts and projects are managed from the admin area at
   `/admin`.
-
-## Deploying
-
-_Coming in milestone M11:_ step-by-step Vercel + custom domain guide.
