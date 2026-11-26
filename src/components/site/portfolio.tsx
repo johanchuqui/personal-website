@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   categoryLabels,
+  nonBlank,
   profile,
   type Hobby,
   type ProfilePhotoSettings,
@@ -64,9 +65,9 @@ export function ProfilePhoto({
 export function Chips({ items }: { items: readonly string[] }) {
   return (
     <ul className="flex flex-wrap gap-2">
-      {items.map((s) => (
+      {nonBlank(items).map((s, i) => (
         <li
-          key={s}
+          key={i}
           className="border-border bg-surface rounded-md border px-2.5 py-1 font-mono text-xs"
         >
           {s}
@@ -146,9 +147,9 @@ export function HobbyGrid({ wide = false }: { wide?: boolean }) {
     profile.hobbies.length % 4 === 0 ? "lg:grid-cols-4" : "lg:grid-cols-3";
   return (
     <ul className={`grid gap-5 sm:grid-cols-2 ${wide ? cols : ""}`}>
-      {profile.hobbies.map((h: Hobby) => (
+      {profile.hobbies.map((h: Hobby, i) => (
         <li
-          key={h.name}
+          key={i}
           className="border-border bg-surface group overflow-hidden rounded-xl border transition hover:shadow-md"
         >
           <div className="border-border relative aspect-[4/3] overflow-hidden border-b">
