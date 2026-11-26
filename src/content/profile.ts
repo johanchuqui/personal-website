@@ -20,22 +20,6 @@ export type Photo = {
    * The second number does the same for top (0%) to bottom (100%).
    */
   position?: string;
-  /**
-   * Zoom in on the photo. 1 = no zoom, 1.3 = 30% closer, 2 = twice as close.
-   * Zooming centers on `position`, so set that to where your face is.
-   */
-  zoom?: number;
-};
-
-export type ProfilePhotoSettings = Photo & {
-  /**
-   * Frame shape for your profile photo:
-   *   "rounded"  – square with soft corners (default)
-   *   "circle"   – round
-   *   "square"   – sharp corners
-   *   "portrait" – taller rectangle (4:5) with soft corners
-   */
-  shape?: "rounded" | "circle" | "square" | "portrait";
 };
 
 export type Project = {
@@ -67,26 +51,21 @@ export type Experience = {
 };
 
 export type Hobby = {
-  /** Optional emoji shown next to the name (and instead of a photo if none). Use "" for none. */
-  icon?: string;
+  /** An emoji works well here. */
+  icon: string;
   name: string;
   description: string;
-  /**
-   * Optional photo, e.g. { src: "/images/hobbies/soccer.jpg", alt: "..." }.
-   * Put the file in public/images/hobbies/. Landscape (4:3) photos fit best;
-   * `position` works the same as for your profile photo.
-   */
-  image?: { src: string; alt: string; position?: string };
 };
 
 export const profile = {
+  // TODO: replace with "/images/profile.jpg" once you add your photo.
   photo: {
     src: "/images/profile.jpg",
     alt: "Portrait of Johan Chuqui",
-    position: "60% 50%",
-    zoom: 1,
-    shape: "rounded",
-  } satisfies ProfilePhotoSettings,
+    position: "55% 0%",
+    zoom: 1.25,
+    shape: "circle",
+  } satisfies Photo,
 
   location: "New Jersey, USA",
 
@@ -112,10 +91,13 @@ export const profile = {
 
   // Your background, one string per paragraph.
   // TODO: rewrite these in your own words.
-  bio: [
-    "I'm a Computer Science and Data Science student at Rutgers University, graduating in 2027. I like working where those two fields meet: finding the story in a dataset, then building the software that makes it useful to other people.",
-    "I got into programming by automating small, annoying tasks, and stayed for the feeling of seeing an idea actually run. These days I split my time between data analysis projects, web development, and coursework in algorithms and statistics.",
-    "I'm looking for a team where I can learn quickly, ship things people use, and ask a lot of questions along the way.",
+  bio: [    
+    "I'm a Computer Science and Data Science student at Rutgers University—New Brunswick, graduating in 2027",
+    "I got into programming in high school, when my school offered a programming elective. Since tech had been one of \
+    my biggest interests since I was a kid, I decided to drop my science elective and take the programming elective instead. \
+    I quickly fell in love, and it turned into one of the best decisions I made and also helped me a lot when picking a major \
+    in college",
+    "Outside of programming, I like spending time with my family and close friends. "
   ],
 
   education: [
@@ -124,7 +106,8 @@ export const profile = {
       degree: "B.S. Computer Science & Data Science",
       dates: "2023 – 2027 (expected)",
       details: [
-        "Relevant coursework: Data Structures, Algorithms, Databases, Statistics, Machine Learning",
+        "Relevant coursework: Data Structures, Design and Analysis of Algorithms, Databases, Software Methodology, \
+        Computer Architecture, Regression Methods, Statistical Inference, Data Management for Data Science",
       ],
     },
   ],
@@ -133,21 +116,64 @@ export const profile = {
   // clubs). Delete the array items you don't need.
   experience: [
     {
-      role: "Data Analyst Intern",
-      org: "Company Name",
-      dates: "Summer 2026",
-      location: "New Jersey",
+      role: "Specialist",
+      org: "kite+key, Rutgers Tech Store",
+      dates: "Sep 2026 - present",
+      location: "Piscataway, New Jersey",
       points: [
-        "Built a dashboard that replaced a weekly manual report.",
-        "Cleaned and joined data from three sources with SQL and pandas.",
+        "Serve 50+ students, faculty, and staff per shift in a high-traffic university tech retail environment, providing \
+        device consultations and troubleshooting across Apple, Dell, and Lenovo product lines.",
+        "Manage intake for 5+ computer repairs per shift and handle device setup and configuration, backed by Apple SEED \
+        training for authorized product expertise.",
+        "Process point-of-sale transactions and coordinate payroll-deduction purchases for university employees through \
+        Rutgers OneSource, while maintaining inventory accuracy and in-store merchandising."
       ],
     },
     {
-      role: "Member",
-      org: "Rutgers Student Club",
-      dates: "2024 – present",
-      points: ["Helped organize workshops and hackathon teams."],
+      role: "Front Desk & STEM Instructor",
+      org: "Rutgers Math & Science Learning Center",
+      dates: "Sep 2023 – present",
+      location:"Piscataway, New Jersey",
+      points: [
+        "Deliver interactive physics and mathematics lessons to classroom-sized groups of elementary school students during \
+        university tours, adapting established curricula with original demonstrations to boost engagement and represent the \
+        center to the community.",
+        "Serve as the first point of contact for 100+ students and visitors daily, managing check-ins, answering inquiries, \
+        and keeping classrooms ready in a fast-paced academic environment.",
+        "Train and onboard new front desk staff, drawing on three years of experience to model center procedures and serve \
+        as a trusted go-to team member for leadership."
+      ],
     },
+    {
+      role: "Founding Father", 
+      org: "Sigma Alpha Mu - Sigma Delta ", 
+      dates: "Jan 2025 - present", 
+      location: "New Brunswick, New Jersey",
+      points: [
+        "Reinstated the Sigma Delta chapter at Rutgers alongside 12 founding members, coauthoring chapter bylaws and \
+        partnering with national headquarters and university administration to reestablish official recognition.",
+        "Served two semesters as Recruitment Chair, doubling chapter membership through outreach events, one-on-one \
+        engagement, and recruitment budgets built with the President and Exchequer; now advise on the Recruitment Committee \
+        and serve on the Standards Board.",
+        "Organized philanthropy and community service initiatives, including blood drives, campus cleanups, and fundraisers \
+        like tie-dye sales, coffee and pastry sales, and Pie a Brother, with all proceeds benefiting the Judy Fund in support \
+        of the Alzheimer's Association."
+      ],
+    },
+    {
+      role: "Expeditor", 
+      org: "Robbinsville Bar & Grill", 
+      dates: "June 2025 - Oct 2026", 
+      location: "Robbinsville, New Jersey",
+      points: [
+        "Served as the final quality checkpoint for a 40+ table restaurant with a 15-seat bar and full patio, verifying \
+        accuracy, plating, and presentation and catching errors before dishes reached guests.",
+        "Directed a team of food runners and coordinated real-time communication between kitchen and front-of-house staff, \
+        prioritizing tickets and managing allergy and special-request orders during high-volume service.",
+        "Trained multiple new employees and stepped in across roles as needed, including food running, bussing, hosting, and \
+        dessert and salad prep, to keep service running smoothly on peak nights."
+      ],
+    }
   ] satisfies Experience[],
 
   skills: [
@@ -170,40 +196,28 @@ export const profile = {
     {
       icon: "",
       name: "Soccer",
-      description:
-        "Whenever I find myself with even a little bit of free time, I usually spend it playing soccer with my friends. My family is originally from Ecuador, so I grew up playing and following soccer. It's always been a big part of my life. My favorite team is, unfortunately, Manchester United. GGMU!",
-      // To add a photo, put it in public/images/hobbies/ and uncomment:
-      // image: { src: "/images/hobbies/soccer.jpg", alt: "Me playing soccer" },
+      description: "Whenever I find myself with even a little bit of free time, I usually \
+      spend it playing soccer with my friends. My family is originally from Ecuador, so \
+      I grew up playing and following soccer. It's always been a big part of my life. My \
+      favorite team is, unfortunately, Manchester United. GGMU!",
     },
-    {
+     {
       icon: "",
       name: "Jiu-Jitsu",
-      description:
-        "For the past two months, I've been training Brazilian Jiu-Jitsu twice a week after my good friend Olex convinced me to join the Rutgers BJJ Club. After my first session, I immediately fell in love with the sport. Since then, I've looked forward to every chance to step onto the mats, challenge myself, and keep improving.",
-      // image: { src: "/images/hobbies/bjj.jpg", alt: "Me at BJJ training" },
+      description: "For the past two months, I've been training Brazilian Jiu-Jitsu twice \
+      a week after my good friend Olex convinced me to join the Rutgers BJJ Club. After \
+      my first session, I immediately fell in love with the sport. Since then, I've looked \
+      forward to every chance to step onto the mats, challenge myself, and keep improving.",
     },
     {
       icon: "",
       name: "Music",
-      // TODO: name a few artists or genres you love.
-      description:
-        "Always have something playing, from late-night study playlists to the gym.",
-      // image: { src: "/images/hobbies/music.jpg", alt: "My headphones and record collection" },
+      description: "Making playlists for every mood and occasionally DJing.",
     },
     {
       icon: "",
-      name: "Weight Lifting",
-      // TODO: write your own description (how often, what you're working toward).
-      description: "Hitting the gym a few times a week to clear my head.",
-      // image: { src: "/images/hobbies/lifting.jpg", alt: "Me at the gym" },
-    },
-    {
-      icon: "",
-      // TODO: put your cat's name here, e.g. "My cat, Luna".
-      name: "My cat",
-      description:
-        "Chief debugging officer. Mostly sits on my keyboard at the worst possible time.",
-      // image: { src: "/images/hobbies/cat.jpg", alt: "My cat" },
+      name: "",
+      description: "Trying to recreate family recipes from memory.",
     },
   ] satisfies Hobby[],
 

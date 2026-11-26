@@ -13,7 +13,7 @@
   --fg: #111827;
   --muted: #4b5563;
   --border: #e5e7eb;
-  --accent: #047857; /* emerald-700 — the one accent color */
+  --accent: #3e198f; /* emerald-700 — the one accent color */
   --accent-fg: #ffffff; /* text on top of accent backgrounds */
   color-scheme: light;
 }
@@ -24,7 +24,7 @@
   --fg: #e5e7eb;
   --muted: #9ca3af;
   --border: #1f2937;
-  --accent: #34d399; /* emerald-400 */
+  --accent: #2b0c99; /* emerald-400 */
   --accent-fg: #0b0f14;
   color-scheme: dark;
 }

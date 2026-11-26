@@ -1,12 +1,9 @@
-// Central place for site-wide info. Edit this file to change your name,
-// tagline, links, or navigation — every page reads from here.
-
 export const site = {
   name: "Johan Chuqui",
   role: "CS & Data Science @ Rutgers '27",
   tagline:
     "I turn messy data into clear answers, and ideas into working software.",
-  lookingFor: "Open to SWE and Data Analyst roles in the NYC Metropolitan area",
+  lookingFor: "Open to Software Engineering and Data Analyst roles in the NYC or Chicago Metropolitan Area",
   email: "johanchuqui05@gmail.com",
   resumePath: "/resume.pdf",
   // File name visitors get when they download it

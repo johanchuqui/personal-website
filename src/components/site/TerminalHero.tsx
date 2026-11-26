@@ -16,18 +16,15 @@ export function TerminalHero() {
         <span className="size-3 rounded-full bg-amber-400/80" />
         <span className="size-3 rounded-full bg-emerald-400/80" />
         <span className="text-muted ml-3 font-mono text-xs">
-          johan@rutgers: ~
         </span>
       </div>
 
       <div className="space-y-4 p-6 font-mono text-sm sm:p-8 sm:text-base">
         <p>
-          <span className="text-accent">johan@rutgers:~$</span>{" "}
           <span
             className="type-in"
             style={{ "--chars": 6 } as React.CSSProperties}
           >
-            whoami
           </span>
         </p>
 
@@ -47,7 +44,7 @@ export function TerminalHero() {
         </p>
 
         <p>
-          <span className="text-accent">johan@rutgers:~$</span>{" "}
+          <span className="text-accent">Get to know a little about me!</span>{" "}
           <span aria-hidden="true" className="cursor-blink text-accent">
             █
           </span>

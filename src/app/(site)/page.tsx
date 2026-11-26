@@ -74,11 +74,11 @@ export default function Home() {
       </section>
 
       <section aria-labelledby="hobbies-heading" className="space-y-6">
-        <SectionHeading id="hobbies-heading">Outside of code</SectionHeading>
+        <SectionHeading id="hobbies-heading">Outside of programming</SectionHeading>
         <HobbyGrid wide />
         <div>
           <p className="text-muted mb-2 font-mono text-sm">
-            $ cat interests.txt
+            Interests
           </p>
           <Chips items={profile.interests} />
         </div>

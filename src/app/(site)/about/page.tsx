@@ -113,17 +113,17 @@ export default function AboutPage() {
             <MapPinIcon className="size-4" /> {profile.location}
           </p>
           <div className="border-border bg-surface space-y-4 rounded-xl border p-5">
-            <p className="text-muted font-mono text-sm">$ cat resume.pdf</p>
+            <p className="text-muted font-mono text-sm">Resume:</p>
             <ButtonAnchor
               href={site.resumePath}
               download={site.resumeDownloadName}
               className="w-full justify-center"
             >
-              <DownloadIcon /> Download résumé
+              <DownloadIcon /> Download resume
             </ButtonAnchor>
           </div>
           <div className="border-border bg-surface rounded-xl border p-5">
-            <p className="text-muted mb-2 font-mono text-sm">$ ls ~/links</p>
+            <p className="text-muted mb-2 font-mono text-sm">Useful links:</p>
             <SocialLinks />
           </div>
         </aside>
