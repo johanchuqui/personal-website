@@ -3,7 +3,7 @@ import { DownloadIcon, MapPinIcon } from "@/components/site/icons";
 import { Chips, HobbyGrid, ProfilePhoto } from "@/components/site/portfolio";
 import { SocialLinks } from "@/components/site/SocialLinks";
 import { ButtonAnchor, PageHeader, SectionHeading } from "@/components/site/ui";
-import { profile } from "@/content/profile";
+import { nonBlank, profile } from "@/content/profile";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -26,16 +26,16 @@ export default function AboutPage() {
             className="space-y-4 text-lg leading-relaxed"
           >
             <SectionHeading id="bio-heading">My background</SectionHeading>
-            {profile.bio.map((para) => (
-              <p key={para}>{para}</p>
+            {nonBlank(profile.bio).map((para, i) => (
+              <p key={i}>{para}</p>
             ))}
           </section>
 
           <section aria-labelledby="exp-heading">
             <SectionHeading id="exp-heading">Experience</SectionHeading>
             <ol className="border-border space-y-8 border-l pl-6">
-              {profile.experience.map((job) => (
-                <li key={`${job.role}-${job.org}`} className="relative">
+              {profile.experience.map((job, i) => (
+                <li key={i} className="relative">
                   <span
                     aria-hidden="true"
                     className="bg-accent absolute top-2 -left-[29px] size-2.5 rounded-full"
@@ -47,10 +47,10 @@ export default function AboutPage() {
                     {job.dates}
                     {job.location && ` · ${job.location}`}
                   </p>
-                  {job.points.length > 0 && (
+                  {nonBlank(job.points).length > 0 && (
                     <ul className="mt-2 list-disc space-y-1 pl-5">
-                      {job.points.map((pt) => (
-                        <li key={pt}>{pt}</li>
+                      {nonBlank(job.points).map((pt, j) => (
+                        <li key={j}>{pt}</li>
                       ))}
                     </ul>
                   )}
@@ -62,17 +62,17 @@ export default function AboutPage() {
           <section aria-labelledby="edu-heading">
             <SectionHeading id="edu-heading">Education</SectionHeading>
             <div className="space-y-4">
-              {profile.education.map((ed) => (
+              {profile.education.map((ed, i) => (
                 <div
-                  key={ed.school}
+                  key={i}
                   className="border-border bg-surface rounded-xl border p-5"
                 >
                   <p className="font-semibold">{ed.school}</p>
                   <p className="text-muted">
                     {ed.degree} · {ed.dates}
                   </p>
-                  {ed.details.map((d) => (
-                    <p key={d} className="mt-2 text-sm">
+                  {nonBlank(ed.details).map((d, j) => (
+                    <p key={j} className="mt-2 text-sm">
                       {d}
                     </p>
                   ))}
@@ -84,8 +84,8 @@ export default function AboutPage() {
           <section aria-labelledby="skills-heading">
             <SectionHeading id="skills-heading">Skills</SectionHeading>
             <dl className="space-y-4">
-              {profile.skills.map(({ group, items }) => (
-                <div key={group}>
+              {profile.skills.map(({ group, items }, i) => (
+                <div key={i}>
                   <dt className="text-muted mb-2 font-mono text-sm">{group}</dt>
                   <dd>
                     <Chips items={items} />

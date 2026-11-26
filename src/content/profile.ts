@@ -270,6 +270,11 @@ export const categoryLabels: Record<Project["category"], string> = {
   creative: "Creative",
 };
 
+/** Drops empty or whitespace-only strings, so a cleared-out line just disappears. */
+export function nonBlank(items: readonly string[]): string[] {
+  return items.filter((s) => s.trim() !== "");
+}
+
 export function getProject(slug: string): Project | undefined {
   return (profile.projects as Project[]).find((p) => p.slug === slug);
 }

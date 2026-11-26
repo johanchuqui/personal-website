@@ -5,7 +5,12 @@ import { notFound } from "next/navigation";
 import { ExternalLinkIcon, GitHubIcon } from "@/components/site/icons";
 import { Chips } from "@/components/site/portfolio";
 import { ButtonAnchor } from "@/components/site/ui";
-import { categoryLabels, getProject, profile } from "@/content/profile";
+import {
+  categoryLabels,
+  getProject,
+  nonBlank,
+  profile,
+} from "@/content/profile";
 
 // Every project page is built ahead of time; unknown slugs show a 404.
 export function generateStaticParams() {
@@ -86,8 +91,8 @@ export default async function ProjectPage({
       )}
 
       <div className="space-y-4 text-lg leading-relaxed">
-        {project.description.map((para) => (
-          <p key={para}>{para}</p>
+        {nonBlank(project.description).map((para, i) => (
+          <p key={i}>{para}</p>
         ))}
       </div>
     </article>
