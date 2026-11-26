@@ -11,6 +11,8 @@ export default function SiteLayout({ children }: LayoutProps<"/">) {
       >
         Skip to content
       </a>
+      {/* Soft accent glow behind the top of every page (see globals.css). */}
+      <div aria-hidden="true" className="page-backdrop" />
       <Header />
       <main
         id="main"

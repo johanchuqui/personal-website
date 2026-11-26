@@ -1,61 +1,14 @@
-import {
-  DownloadIcon,
-  GitHubIcon,
-  LinkedInIcon,
-} from "@/components/site/icons";
-import {
-  Chips,
-  HobbyGrid,
-  ProfilePhoto,
-  ProjectGrid,
-} from "@/components/site/portfolio";
-import { TerminalHero } from "@/components/site/TerminalHero";
-import { ButtonAnchor, ButtonLink, SectionHeading } from "@/components/site/ui";
+import { Chips, HobbyGrid, ProjectGrid } from "@/components/site/portfolio";
+import { Hero } from "@/components/site/Hero";
+import { ButtonLink, SectionHeading } from "@/components/site/ui";
 import { profile } from "@/content/profile";
-import { site } from "@/lib/site";
 
 export default function Home() {
   const featured = profile.projects.filter((p) => p.featured);
 
   return (
     <div className="space-y-20">
-      <div className="space-y-6">
-        <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
-          <TerminalHero />
-          <ProfilePhoto
-            size={260}
-            priority
-            className="order-first mx-auto w-40 sm:w-52 md:order-last md:w-64"
-          />
-        </div>
-        <div className="flex flex-wrap gap-3">
-          <ButtonAnchor
-            href={site.resumePath}
-            download={site.resumeDownloadName}
-          >
-            <DownloadIcon /> Download resume
-          </ButtonAnchor>
-          <ButtonAnchor
-            href={site.links.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="secondary"
-          >
-            <LinkedInIcon /> LinkedIn
-          </ButtonAnchor>
-          <ButtonAnchor
-            href={site.links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="secondary"
-          >
-            <GitHubIcon /> GitHub
-          </ButtonAnchor>
-          <ButtonLink href="/contact" variant="secondary">
-            Get in touch
-          </ButtonLink>
-        </div>
-      </div>
+      <Hero />
 
       <section aria-labelledby="background-heading" className="space-y-4">
         <SectionHeading id="background-heading">Background</SectionHeading>
