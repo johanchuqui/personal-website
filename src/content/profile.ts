@@ -20,6 +20,22 @@ export type Photo = {
    * The second number does the same for top (0%) to bottom (100%).
    */
   position?: string;
+  /**
+   * Zoom in on the photo. 1 = no zoom, 1.3 = 30% closer, 2 = twice as close.
+   * Zooming centers on `position`, so set that to where your face is.
+   */
+  zoom?: number;
+};
+
+export type ProfilePhotoSettings = Photo & {
+  /**
+   * Frame shape for your profile photo:
+   *   "rounded"  – square with soft corners (default)
+   *   "circle"   – round
+   *   "square"   – sharp corners
+   *   "portrait" – taller rectangle (4:5) with soft corners
+   */
+  shape?: "rounded" | "circle" | "square" | "portrait";
 };
 
 export type Project = {
@@ -51,21 +67,26 @@ export type Experience = {
 };
 
 export type Hobby = {
-  /** An emoji works well here. */
-  icon: string;
+  /** Optional emoji shown next to the name. Use "" for none. */
+  icon?: string;
   name: string;
   description: string;
+  /**
+   * Optional photo, e.g. { src: "/images/hobbies/soccer.jpg", alt: "..." }.
+   * Put the file in public/images/hobbies/. `position` works the same as for
+   * your profile photo.
+   */
+  image?: { src: string; alt: string; position?: string };
 };
 
 export const profile = {
-  // TODO: replace with "/images/profile.jpg" once you add your photo.
   photo: {
     src: "/images/profile.jpg",
     alt: "Portrait of Johan Chuqui",
     position: "55% 0%",
     zoom: 1.25,
     shape: "circle",
-  } satisfies Photo,
+  } satisfies ProfilePhotoSettings,
 
   location: "New Jersey, USA",
 
@@ -91,13 +112,13 @@ export const profile = {
 
   // Your background, one string per paragraph.
   // TODO: rewrite these in your own words.
-  bio: [    
+  bio: [
     "I'm a Computer Science and Data Science student at Rutgers University—New Brunswick, graduating in 2027",
     "I got into programming in high school, when my school offered a programming elective. Since tech had been one of \
     my biggest interests since I was a kid, I decided to drop my science elective and take the programming elective instead. \
     I quickly fell in love, and it turned into one of the best decisions I made and also helped me a lot when picking a major \
     in college",
-    "Outside of programming, I like spending time with my family and close friends. "
+    "Outside of programming, I like spending time with my family and close friends. ",
   ],
 
   education: [
@@ -126,14 +147,14 @@ export const profile = {
         "Manage intake for 5+ computer repairs per shift and handle device setup and configuration, backed by Apple SEED \
         training for authorized product expertise.",
         "Process point-of-sale transactions and coordinate payroll-deduction purchases for university employees through \
-        Rutgers OneSource, while maintaining inventory accuracy and in-store merchandising."
+        Rutgers OneSource, while maintaining inventory accuracy and in-store merchandising.",
       ],
     },
     {
       role: "Front Desk & STEM Instructor",
       org: "Rutgers Math & Science Learning Center",
       dates: "Sep 2023 – present",
-      location:"Piscataway, New Jersey",
+      location: "Piscataway, New Jersey",
       points: [
         "Deliver interactive physics and mathematics lessons to classroom-sized groups of elementary school students during \
         university tours, adapting established curricula with original demonstrations to boost engagement and represent the \
@@ -141,13 +162,13 @@ export const profile = {
         "Serve as the first point of contact for 100+ students and visitors daily, managing check-ins, answering inquiries, \
         and keeping classrooms ready in a fast-paced academic environment.",
         "Train and onboard new front desk staff, drawing on three years of experience to model center procedures and serve \
-        as a trusted go-to team member for leadership."
+        as a trusted go-to team member for leadership.",
       ],
     },
     {
-      role: "Founding Father", 
-      org: "Sigma Alpha Mu - Sigma Delta ", 
-      dates: "Jan 2025 - present", 
+      role: "Founding Father",
+      org: "Sigma Alpha Mu - Sigma Delta ",
+      dates: "Jan 2025 - present",
       location: "New Brunswick, New Jersey",
       points: [
         "Reinstated the Sigma Delta chapter at Rutgers alongside 12 founding members, coauthoring chapter bylaws and \
@@ -157,13 +178,13 @@ export const profile = {
         and serve on the Standards Board.",
         "Organized philanthropy and community service initiatives, including blood drives, campus cleanups, and fundraisers \
         like tie-dye sales, coffee and pastry sales, and Pie a Brother, with all proceeds benefiting the Judy Fund in support \
-        of the Alzheimer's Association."
+        of the Alzheimer's Association.",
       ],
     },
     {
-      role: "Expeditor", 
-      org: "Robbinsville Bar & Grill", 
-      dates: "June 2025 - Oct 2026", 
+      role: "Expeditor",
+      org: "Robbinsville Bar & Grill",
+      dates: "June 2025 - Oct 2026",
       location: "Robbinsville, New Jersey",
       points: [
         "Served as the final quality checkpoint for a 40+ table restaurant with a 15-seat bar and full patio, verifying \
@@ -171,9 +192,9 @@ export const profile = {
         "Directed a team of food runners and coordinated real-time communication between kitchen and front-of-house staff, \
         prioritizing tickets and managing allergy and special-request orders during high-volume service.",
         "Trained multiple new employees and stepped in across roles as needed, including food running, bussing, hosting, and \
-        dessert and salad prep, to keep service running smoothly on peak nights."
+        dessert and salad prep, to keep service running smoothly on peak nights.",
       ],
-    }
+    },
   ] satisfies Experience[],
 
   skills: [
@@ -196,7 +217,8 @@ export const profile = {
     {
       icon: "",
       name: "Soccer",
-      description: "Whenever I find myself with even a little bit of free time, I usually \
+      description:
+        "Whenever I find myself with even a little bit of free time, I usually \
       spend it playing soccer with my friends. My family is originally from Ecuador, so \
       I grew up playing and following soccer. It's always been a big part of my life. My \
       favorite team is, unfortunately, Manchester United. GGMU!",
@@ -206,10 +228,11 @@ export const profile = {
         position: "50% 35%",
       },
     },
-     {
+    {
       icon: "",
       name: "Jiu-Jitsu",
-      description: "For the past couple of months, I've been training Brazilian Jiu-Jitsu twice \
+      description:
+        "For the past couple of months, I've been training Brazilian Jiu-Jitsu twice \
       a week after my good friend Olex convinced me to join the Rutgers BJJ Club. After \
       my first session, I immediately fell in love with the sport. Since then, I've looked \
       forward to every chance to step onto the mats, challenge myself, and keep improving.",
@@ -227,18 +250,19 @@ export const profile = {
         src: "/images/hobbies/music.jpeg",
         alt: "Me at Govball 2024",
         position: "50% 100%",
-      }
+      },
     },
     {
       icon: "",
       name: "My cat",
-      description: "This is my childhood cat Lucas. He was my birthday present for when I turned 11. I'm 21 years old now \
+      description:
+        "This is my childhood cat Lucas. He was my birthday present for when I turned 11. I'm 21 years old now \
       I love this little guy so much.",
       image: {
         src: "/images/hobbies/lucas.jpeg",
         alt: "Lucas",
         position: "50% 70%",
-      }
+      },
     },
   ] satisfies Hobby[],
 
