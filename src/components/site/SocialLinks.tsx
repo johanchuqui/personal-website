@@ -1,11 +1,13 @@
 import { site } from "@/lib/site";
-import { GitHubIcon, LinkedInIcon, MailIcon } from "./icons";
+import { GitHubIcon, LinkedInIcon, MailIcon, XIcon } from "./icons";
 
-const links = [
+// Links with an empty address (e.g. twitter: "") are hidden.
+const links: { href: string; label: string; Icon: typeof GitHubIcon }[] = [
   { href: site.links.github, label: "GitHub", Icon: GitHubIcon },
   { href: site.links.linkedin, label: "LinkedIn", Icon: LinkedInIcon },
+  { href: site.links.twitter, label: "X (Twitter)", Icon: XIcon },
   { href: `mailto:${site.email}`, label: "Email", Icon: MailIcon },
-];
+].filter((l) => l.href.trim() !== "");
 
 export function SocialLinks() {
   return (
