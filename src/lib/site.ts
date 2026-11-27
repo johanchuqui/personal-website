@@ -11,7 +11,7 @@ export const site = {
   links: {
     // Your X (Twitter) profile, e.g. "https://x.com/yourhandle".
     // Leave it as "" to hide the icon.
-    twitter: "",
+    twitter: "https://x.com/jojocodes05",
     github: "https://github.com/johanchuqui",
     // TODO: replace with your real LinkedIn profile URL
     linkedin: "https://www.linkedin.com/in/johanchuqui",
