@@ -200,24 +200,45 @@ export const profile = {
       spend it playing soccer with my friends. My family is originally from Ecuador, so \
       I grew up playing and following soccer. It's always been a big part of my life. My \
       favorite team is, unfortunately, Manchester United. GGMU!",
+      image: {
+        src: "/images/hobbies/soccer.jpg",
+        alt: "Me at Metlife Stadium",
+        position: "50% 35%",
+      },
     },
      {
       icon: "",
       name: "Jiu-Jitsu",
-      description: "For the past two months, I've been training Brazilian Jiu-Jitsu twice \
+      description: "For the past couple of months, I've been training Brazilian Jiu-Jitsu twice \
       a week after my good friend Olex convinced me to join the Rutgers BJJ Club. After \
       my first session, I immediately fell in love with the sport. Since then, I've looked \
       forward to every chance to step onto the mats, challenge myself, and keep improving.",
+      image: {
+        src: "/images/hobbies/jiujitsu.jpeg",
+        alt: "One of my favorite UFC fighters: Chito Vera",
+        position: "50% 0%",
+      },
     },
     {
       icon: "",
       name: "Music",
-      description: "Making playlists for every mood and occasionally DJing.",
+      description: "",
+      image: {
+        src: "/images/hobbies/music.jpeg",
+        alt: "Me at Govball 2024",
+        position: "50% 100%",
+      }
     },
     {
       icon: "",
-      name: "",
-      description: "Trying to recreate family recipes from memory.",
+      name: "My cat",
+      description: "This is my childhood cat Lucas. He was my birthday present for when I turned 11. I'm 21 years old now \
+      I love this little guy so much.",
+      image: {
+        src: "/images/hobbies/lucas.jpeg",
+        alt: "Lucas",
+        position: "50% 70%",
+      }
     },
   ] satisfies Hobby[],
 
